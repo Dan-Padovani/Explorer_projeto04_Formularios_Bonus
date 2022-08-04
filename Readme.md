@@ -13,13 +13,13 @@
 
 ### :computer: About
 
-In this challenge, it was requested to create a desktop form, the main focus it's to work with multiple types of inputs.
+In this challenge, it was requested to create a desktop form, the main focus it's to work with antoher types of inputs, like: text-area, checked and select.
 
 I had the oportunity to practice and study:
 *	Forms;
 *	Labes, Ids and inputs;
 *	Fieldset and Legend;
-* Creating styles for submit;
+* Customize form inputs: text-area, checked and select;
 * Validate inputs with html properties.
 
 
@@ -39,7 +39,7 @@ I had the oportunity to practice and study:
 
 Just access the link bellow:
 
-<a href="https://dan-padovani.github.io/Explorer_projeto04_Formularios/" target="_blank">Formulário agendamento de MENTORIA</a>
+<a href="https://dan-padovani.github.io/Explorer_projeto04_Formularios_Bonus/" target="_blank">Formulário para avaliar sua Mentoria</a>
 
 ---
 
