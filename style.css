@@ -1,0 +1,273 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 62.5%;
+
+	--ff-main-tittles: 'Staatliches', cursive;
+	--ff-form-text: 'Poppins', sans-serif;
+
+	--bg-primary: hsl(226, 41%, 82%);
+	--bg-header-body: hsl(218, 23%, 21%);
+
+	--fc-form-label: hsl(258, 9%, 32%);
+	--fc-form-span: hsl(257, 6%, 44%);
+	--fc-form-input: hsl(240, 33%, 99%);
+	--fc-form-legend: hsl(209, 28%, 28%);
+	--fc-header: hsl(0, 0%, 100%);
+
+	--fs-form-legend: 2.4rem;
+	--fs-form-input: 1.6rem;
+	--fs-form-label: 1.4rem;
+	--fs-label-hint: 1.2rem;
+}
+
+body {
+	background-color: var(--bg-primary);
+}
+
+body::before {
+	content: '';
+	background: var(--bg-header-body);
+	width: 100%;
+	height: 46.5rem;
+
+	top: 0;
+	z-index: -1;
+	position: absolute;
+}
+
+header {
+	color: var(--fc-header);
+	text-align: center;
+}
+
+header h1 {
+	font-family: var(--ff-main-tittles);
+	font-size: 3.6rem;
+	font-weight: 400;
+	line-height: 4.5rem;
+
+	margin-top: 10rem;
+}
+
+header p {
+	font-family: var(--ff-form-text);
+	font-size: 1.6rem;
+	line-height: 2.4rem;
+
+	margin-bottom: 3rem;
+}
+
+form {
+	background: var(--fc-header);
+	
+	margin: 3.35rem auto 6rem;
+	min-height: 30rem;
+	max-width: 75rem;
+	padding-bottom: 6.4rem;
+
+	border-radius: 2rem 2rem 2rem 2rem;
+}
+
+fieldset {
+	border: 0;
+}
+
+h1, legend, button {
+	text-transform: uppercase;
+}
+
+.fieldset-wrapper-top {
+	background: hsl(6, 89%, 69%);
+	height: 13rem;
+	border-radius: 2rem 2rem 0 0;
+}
+
+.fieldset-wrapper-top legend {
+	color: var(--fc-header);
+	
+	font-size: var(--fs-form-legend);
+	font-family: var(--ff-main-tittles);
+
+	text-align: center;
+	padding-top: 5rem;
+}
+
+.fieldset-wrapper {
+	padding: 0 6.4rem;
+}
+
+.input-fullname-wrapper {
+	display: flex;
+	
+	padding: 3rem 0 2rem;
+	gap: 2rem;
+}
+
+.input-fullname-wrapper > div, 
+#tutor-selection {
+	width: 30rem;
+}
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-wrapper label, .checkbox-wrapper label {
+	line-height: 2.4rem;
+	font-family: var(--ff-form-text);
+	font-size: var(--fs-form-label);
+	color: var(--fc-form-label);
+}
+
+.input-wrapper span {
+	line-height: 2rem;
+	font-family: var(--ff-form-text);
+	font-size: var(--fs-label-hint);
+	color: var(--fc-form-span);
+}
+
+.input-wrapper input,
+.input-wrapper textarea,
+.input-wrapper select {
+	background: var(--fc-form-input);
+
+	border: 1px solid hsl(240, 24%, 92%);
+	border-radius: 8px;
+
+	margin-top: 7px;
+	height: 5.5rem;
+	line-height: 2.4rem;
+	padding: 0 2.4rem;
+	color: var(--fc-form-legend);
+
+	font-family: var(--ff-form-text);
+	font-size: var(--fs-form-input);
+}
+
+.mentor-information legend,
+.mentor-scheduling legend {
+	padding: 3.2rem 0 1rem;
+	text-align: center;
+
+	font-size: var(--fs-form-legend);
+	font-family: var(--ff-main-tittles);
+	
+	color: var(--fc-form-legend);
+	border-bottom: 1px solid hsl(240, 25%, 92%)
+}
+
+.mentor-information .input-wrapper label {
+	padding-top: 3.2rem;
+}
+
+.input-wrapper select {
+	appearance: none;
+}
+
+.input-wrapper textarea {
+	height: 17rem;
+	margin-bottom: 3rem;
+	resize: none;
+	padding-top: 1rem;
+}
+
+.checkbox-wrapper {
+	position: relative;
+	align-items: center;
+}
+
+.checkbox-wrapper label {
+	margin: 0;
+	display: flex;
+	gap: 8px;
+}
+
+/*
+	Here we fix the acessibility and the TAB problem to focus the element, basecaly we are gonna use a mask element
+	We define the same size of the checkbox element and the opacity 0
+*/
+.checkbox-wrapper input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	width: 24px; 
+	height: 24px;
+}
+
+/*	
+	We use a condition for checked + before new element
+	After we use a new SVG to fill the checkbox
+*/
+.checkbox-wrapper input:checked + label::before {
+	background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z' fill='%2342D3FF'/%3E%3C/svg%3E ");
+}
+
+/*
+	A new condition to select the checkbox when we use TAB key, fixing the acessibility 
+*/
+.checkbox-wrapper input:focus + label::before {
+	outline: 2px solid black;
+}
+
+/*
+	The nem element to cover the standard checkbox element
+*/
+.checkbox-wrapper label::before {
+	content: '';
+	width: 24px;
+	height: 24px;
+	display: block;
+	
+	border-radius: 8px;
+	border: 1px solid #E6E6F0;
+
+	background: var(--fc-form-input);
+}
+
+.scheduling-date-time {
+	padding: 3.1rem 0 6.2rem;
+	display: flex;
+	gap: 1rem;
+}
+
+.scheduling-date-time > div:nth-child(1) {
+	width: 30rem;
+	margin-right: 3.2rem;
+}
+
+.scheduling-date-time > div:nth-child(2),
+.scheduling-date-time > div:nth-child(3) {
+	width: 14rem;	
+} 
+
+button {
+	height: 5.2rem;
+	width: 62rem;
+	display: block;
+	margin: 0 auto;
+
+	border-radius: 8px;
+	border: 0;
+	background: hsl(6, 89%, 69%);
+
+	font-family: var(--ff-main-tittles);
+	font-style: normal;
+	font-size: 2rem;
+	line-height: 2.6rem;
+
+	color: var(--fc-header);
+
+	transition: all 1s;
+}
+
+button:hover {
+	background: hsl(111, 41%, 52%);
+	transform: scale(1.1);
+}
